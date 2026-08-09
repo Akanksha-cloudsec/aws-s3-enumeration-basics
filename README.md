@@ -42,9 +42,60 @@ Let's check out the website!
  ![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/c273fab4e53d82c519087bd38c4b64850a15eea2/Images/img%202.png)
  ![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/c273fab4e53d82c519087bd38c4b64850a15eea2/Images/img%203.png)
 
+ S3 bucket - **dev.huge-logistics.com**, it store static files which stores images, CSS and JavaScript files.
 
+---
 
+Lets check these bucket by attempting these requests in the browser.
 
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/c273fab4e53d82c519087bd38c4b64850a15eea2/Images/img%204.png)
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/6842f027fc51667af4d8017c47f77918f59be201/Images/img%205.png)
+
+Neither of these requests are successful as both result in access denied messages.
+
+---
+
+Now try listing its contents, with the help of **--no-sign-request**, it would attempt to use any locally configured AWS credentials.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/6842f027fc51667af4d8017c47f77918f59be201/Images/img%206.png)
+
+This reveals that the S3 bucket is open for the entire internet to access. Attempting to recursively list all directories. Results in an access denied error. It seems there are some directories which are not publicly accessible.
+
+--- 
+
+Let's check each directories. 
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/6842f027fc51667af4d8017c47f77918f59be201/Images/img%207.png)
+
+It seems that both the **admin** and **migration-files** directories don't allow public access. The **static** and **shared** directory is available. **Shared** directory contains that archive **hl_migration_project.zip**.
+
+---
+
+Download and unzipping the archive **hl_migration_project.zip**.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/6842f027fc51667af4d8017c47f77918f59be201/Images/img%208.png)
+
+There nothing inside the __MACOSX directory.
+
+--- 
+
+Let's check **migrate_secrets.ps1** files.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/6842f027fc51667af4d8017c47f77918f59be201/Images/img%209.png)
+
+The script contains hardcoded AWS keys and region. Secrets Manager is a service that helps securely store, manage, and retrieve secrets like API keys and database credentials.
+
+---
+
+Let's set the keys.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/6842f027fc51667af4d8017c47f77918f59be201/Images/img%2010.png)
+
+User name :- **pam-test**.
+
+---
+
+Now let's check **admin** and **migration-files** directories again.
 
 
 
