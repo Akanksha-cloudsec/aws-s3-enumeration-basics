@@ -128,12 +128,30 @@ Now let's check the test-export.xml file.
 
 ---
 
-Let's check those credentials.
+Let's set those credentials.
 
 ![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/5d8aafc37d9d111ce7d411262ebf44fcd7a1fd7b/Images/img%2017.png)
 
 ---
 
+Now let's check **admin** directory once again.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/b978c3b22f6db78074760bbed9d23c3a6158c94c/Images/img%2021.png)
+
+The admin account is allowed to access the admin folder, and inside we see an export of users credit card numbers and other PII.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/b978c3b22f6db78074760bbed9d23c3a6158c94c/Images/img%2018.png)
+
+<h2><a class="anchor" id="learning-outcomes"></a> 🧠 Learning outcomes</h2>
+
+- Basic S3 enumeration and credential exfiltration
+- An awareness of how this scenario could be been prevented
+
+<h2><a class="anchor" id="resources"></a> 📚 Resources</h2>
+
+[Amazon S3](https://aws.amazon.com/iam/)
+
+[Amazon CLI](https://aws.amazon.com/awscli/)
 
 
 
