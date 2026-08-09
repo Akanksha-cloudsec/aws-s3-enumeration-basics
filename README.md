@@ -97,6 +97,47 @@ User name :- **pam-test**.
 
 Now let's check **admin** and **migration-files** directories again.
 
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/6842f027fc51667af4d8017c47f77918f59be201/Images/img%2012.png)
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/5d8aafc37d9d111ce7d411262ebf44fcd7a1fd7b/Images/img%2013.png)
+
+This reveals a **website transactions export file** and also the flag. Unfortunately we are unable to **download** either using our current credentials. In **migration-files** directory we found four files.
+
+---
+
+let's explore **migrate_secrets.ps1 file**.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/5d8aafc37d9d111ce7d411262ebf44fcd7a1fd7b/Images/img%2014.png)
+
+We found **aws configuration**.
+
+--- 
+
+Let's check those configuration.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/5d8aafc37d9d111ce7d411262ebf44fcd7a1fd7b/Images/img%2015.png)
+
+But its shows **Invalid client token**.
+
+---
+
+Now let's check the test-export.xml file.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/5d8aafc37d9d111ce7d411262ebf44fcd7a1fd7b/Images/img%2016.png)
+
+**BINGO!** we found the aws **IT Admin credentials**.
+
+---
+
+Let's check those credentials.
+
+![image alt](https://github.com/Akanksha-cloudsec/aws-s3-enumeration-basics/blob/5d8aafc37d9d111ce7d411262ebf44fcd7a1fd7b/Images/img%2017.png)
+
+---
+
+
+
+
+
 
 
 
